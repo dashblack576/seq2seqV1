@@ -15,10 +15,10 @@ MAX_SEQUENCE_LENGTH = 85
 
 test_ds = load_dataset('gigaword', split='test')
 
-transformer = keras.models.load_model('C:/Users/dashb/Documents/capstoneProject/seq2seqV1/Model')
+transformer = keras.models.load_model('model_file')
 
 tokenizer = keras_nlp.tokenizers.WordPieceTokenizer(
-    vocabulary='C:/Users/dashb/Documents/capstoneProject/seq2seqV1/vocab.txt',
+    vocabulary='vocab_file',
     lowercase=True,
     strip_accents=True,
 )
