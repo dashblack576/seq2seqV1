@@ -62,7 +62,7 @@ vocab = train_word_piece(train_ds['summary'], VOCAB_SIZE, reserved_tokens)
 '''
 
 tokenizer = keras_nlp.tokenizers.WordPieceTokenizer(
-    vocabulary='C:/Users/dashb/Documents/capstoneProject/seq2seqV1/vocab.txt',
+    vocabulary='vocab_file',
     lowercase=True,
     strip_accents=True,
 )
@@ -197,25 +197,4 @@ transformer.fit(train_ds, steps_per_epoch = 200, epochs=1, validation_data=val_d
 
 config = transformer.get_config()
 
-transformer.save("C:/Users/dashb/Documents/capstoneProject/seq2seqV1/Model", save_traces = True)
-
-
-'''
-transformer = keras.models.load_model("C:/Users/dashb/Documents/capstoneProject/seq2seqV1/Model")
-
-callback = tf.keras.callbacks.EarlyStopping(
-    monitor="val_loss",
-    min_delta=0,
-    patience=3,
-    verbose=1,
-    mode="auto",
-    baseline=None,
-    restore_best_weights=False,
-)
-for x in range(3):
-    transformer.fit(train_ds, epochs=7, validation_data=val_ds, callbacks = callback)
-    print(x + 1)
-
-
-transformer.save("C:/Users/dashb/Documents/capstoneProject/seq2seqV1/Model", save_traces = True)
-'''
+transformer.save("model_file", save_traces = True)
