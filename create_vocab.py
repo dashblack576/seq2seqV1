@@ -21,7 +21,7 @@ def train_word_piece(text_samples, vocab_size, reserved_tokens):
         word_piece_ds.batch(1000).prefetch(2).take(7500),
         vocabulary_size=vocab_size,
         reserved_tokens=reserved_tokens,
-        vocabulary_output_file = 'vocab_save_file
+        vocabulary_output_file = 'vocab_save_file'
         '
     )
     return vocab
