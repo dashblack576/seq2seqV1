@@ -43,7 +43,7 @@ train_ds = train_ds.map(encode)
 val_ds = val_ds.map(encode)
 
 tokenizer = keras_nlp.tokenizers.WordPieceTokenizer(
-    vocabulary='C:/Users/dashb/Documents/capstoneProject/seq2seqV1/vocab.txt',
+    vocabulary='vocab_file',
     lowercase=True,
     strip_accents=True,
 )
@@ -97,7 +97,7 @@ val_ds = make_dataset(val_ds)
 
 
 
-transformer = keras.models.load_model("C:/Users/dashb/Documents/capstoneProject/seq2seqV1/Model")
+transformer = keras.models.load_model("model_file")
 
 opt = tf.keras.optimizers.RMSprop(
     learning_rate=0.00001,
@@ -121,5 +121,5 @@ callback = [tf.keras.callbacks.EarlyStopping(monitor="val_loss", min_delta=0, pa
 
 for x in range(10): 
     transformer.fit(train_ds, epochs = 7, validation_data=val_ds, validation_steps = 500, callbacks=[callback])
-    transformer.save("C:/Users/dashb/Documents/capstoneProject/seq2seqV1/Model", save_traces = True)
+    transformer.save("model_file", save_traces = True)
     print(x + 1)
